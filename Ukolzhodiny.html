@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Úkol na hodinu</title>
+    <style>
+        /* Design: základní layout a stylování */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        section {
+            padding: 20px;
+            margin: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        /* Design: animace */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        /* Posun směrem nahoru : zatím nefunguje */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background-color: #444;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Design: hlavička a navigace -->
+    <header>
+        <h1>Úkol z hodiny</h1>
+    </header>
+
+    <nav>
+        <a href="#home">Domů</a>
+        <a href="#about">O nás</a>
+        <a href="#contact">Kontakt</a>
+    </nav>
+
+    <section id="home" class="fade-in">
+        <h2>Vítej na mém webu</h2>
+        <p>Tento web splňuje asi všechny požadavky, ale nejsem si jistej.</p>
+    </section>
+
+    <!-- komunikace formuláře s potvrzením-->
+    <section id="contact" class="fade-in">
+        <h2>Kontaktuj mě</h2>
+        <form id="contactForm">
+            <label for="name">Jméno:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">E-mail:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="message">Zpráva:</label><br>
+            <textarea id="message" name="message" required></textarea><br><br>
+            <input type="submit" value="Odeslat">
+        </form>
+        <p id="formStatus"></p>
+    </section>
+
+    <!-- Scroll to top button : zatím nefunkční -->
+    <button id="scrollToTopBtn">Nahoru</button>
+
+    <footer>
+        <p>© 2024 Úkol z hodiny(Barulola)</p>
+    </footer>
+
+    <script>
+        // Potvrzování formuláře
+        const form = document.getElementById('contactForm');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault(); // Zastaví odeslání formuláře
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (name && email && message) {
+                document.getElementById('formStatus').innerText = "Děkujeme za odeslání!";
+                form.reset(); // Čištění formuláře
+            } else {
+                document.getElementById('formStatus').innerText = "Vyplňte prosím všechna pole.";
+            }
+        });
+
+        // Scroll : nefunkční
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        window.onscroll = function () {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        };
+
+        scrollToTopBtn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
+
+    
+</body>
+</html>
